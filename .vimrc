@@ -3,6 +3,10 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 
+" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+
 " Recursive path traversal
 set path+=**
 
@@ -33,7 +37,9 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-salve'
 Plugin 'mattn/emmet-vim'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'w0rp/ale'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()
 filetype plugin indent on
@@ -54,4 +60,19 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" ALE linting
+let g:airline#extension#ale#enabled = 1 " Airline integration
+let g:ale_sign_error = "❗️"
+let g:ale_sign_warning = "💩"
+let g:ale_line_on_enter = 0
+
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+
+" Ctrl-P Fuzzy Finder
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = ['line']
 
