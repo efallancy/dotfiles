@@ -40,6 +40,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'w0rp/ale'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 filetype plugin indent on
