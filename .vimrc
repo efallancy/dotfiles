@@ -41,6 +41,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'w0rp/ale'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype plugin indent on
