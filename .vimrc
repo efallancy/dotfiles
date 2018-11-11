@@ -42,6 +42,7 @@ Plugin 'w0rp/ale'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-surround'
+Plugin 'luochen1990/rainbow'
 
 call vundle#end()
 filetype plugin indent on
@@ -78,4 +79,7 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['line']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+
+" Rainbow Parentheses
+let g:rainbow_active = 1
 
