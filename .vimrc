@@ -43,6 +43,8 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-surround'
 Plugin 'luochen1990/rainbow'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'quramy/tsuquyomi'
 
 call vundle#end()
 filetype plugin indent on
@@ -83,3 +85,5 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 " Rainbow Parentheses
 let g:rainbow_active = 1
 
+" vim-typescript
+let g:typescript_ignore_typescriptdoc = 0
