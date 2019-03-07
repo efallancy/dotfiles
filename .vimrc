@@ -22,6 +22,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" Ignore case
+set ignorecase
+
 " OSX weird behaviour using backspace
 set backspace=indent,eol,start
 
@@ -45,6 +48,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'luochen1990/rainbow'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'quramy/tsuquyomi'
+Plugin 'neovimhaskell/haskell-vim'
+Plugin 'alx741/vim-hindent'
+Plugin 'mhinz/vim-grepper'
+Plugin 'kyuhi/vim-emoji-complete'
 
 call vundle#end()
 filetype plugin indent on
@@ -67,10 +74,11 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " ALE linting
-let g:airline#extension#ale#enabled = 1 " Airline integration
+let g:airline#extensions#ale#enabled = 1 " Airline integration
 let g:ale_sign_error = "❗️"
-let g:ale_sign_warning = "💩"
+let g:ale_sign_warning= "💩"
 let g:ale_line_on_enter = 0
+let g:ale_linters_ignore = {'typescript': ['tslint']}
 
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
@@ -87,3 +95,6 @@ let g:rainbow_active = 1
 
 " vim-typescript
 let g:typescript_ignore_typescriptdoc = 0
+
+" vim-hindent
+let g:hindent_on_save = 0
