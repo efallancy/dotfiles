@@ -32,7 +32,8 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'haishanh/night-owl.vim'
+"Plugin 'haishanh/night-owl.vim'
+Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
@@ -62,7 +63,13 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-colorscheme night-owl
+set background=dark
+colorscheme hybrid_material
+
+" Theme stuffs
+let g:enable_bold_font = 1
+let g:enable_italic_font = 1
+let g:hybrid_transparent_background = 1
 
 "For NerdTree toggle
 map <C-n> :NERDTreeToggle<CR>
