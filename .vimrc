@@ -53,6 +53,7 @@ Plugin 'neovimhaskell/haskell-vim'
 Plugin 'alx741/vim-hindent'
 Plugin 'mhinz/vim-grepper'
 Plugin 'kyuhi/vim-emoji-complete'
+Plugin 'pangloss/vim-javascript'
 
 call vundle#end()
 filetype plugin indent on
