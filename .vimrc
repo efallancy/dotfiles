@@ -54,6 +54,7 @@ Plugin 'alx741/vim-hindent'
 Plugin 'mhinz/vim-grepper'
 Plugin 'kyuhi/vim-emoji-complete'
 Plugin 'pangloss/vim-javascript'
+Plugin 'reasonml-editor/vim-reason-plus'
 
 call vundle#end()
 filetype plugin indent on
