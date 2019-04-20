@@ -60,8 +60,8 @@ install_openjdk () {
 }
 
 # Installing all the packages
-install_packages
 install_openjdk adoptopenjdk8
+install_packages
 
 echo 'Package installation done 🌟'
 
