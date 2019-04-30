@@ -40,6 +40,9 @@ packages=(
 
   # Editor
   'vim'
+
+  # Fuzzy Finder
+  'ack'
 )
 
 for package in "${packages[@]}"; do
