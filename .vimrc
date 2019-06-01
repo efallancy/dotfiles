@@ -32,8 +32,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-"Plugin 'haishanh/night-owl.vim'
-Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'drewtempelmeyer/palenight.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
@@ -59,19 +58,17 @@ Plugin 'reasonml-editor/vim-reason-plus'
 call vundle#end()
 filetype plugin indent on
 
-" Night-owl theme
+" Theming colour config
 if (has("termguicolors"))
   set termguicolors
 endif
 
 syntax enable
 set background=dark
-colorscheme hybrid_material
+colorscheme palenight
 
 " Theme stuffs
-let g:enable_bold_font = 1
-let g:enable_italic_font = 1
-let g:hybrid_transparent_background = 1
+let g:palenight_terminal_italics=1
 
 "For NerdTree toggle
 map <C-n> :NERDTreeToggle<CR>
