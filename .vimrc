@@ -32,7 +32,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'drewtempelmeyer/palenight.vim'
+Plugin 'bcicen/vim-vice'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
@@ -65,10 +65,7 @@ endif
 
 syntax enable
 set background=dark
-colorscheme palenight
-
-" Theme stuffs
-let g:palenight_terminal_italics=1
+colorscheme vice
 
 "For NerdTree toggle
 map <C-n> :NERDTreeToggle<CR>
