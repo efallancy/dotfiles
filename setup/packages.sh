@@ -27,6 +27,9 @@ packages=(
   'go'
   'dep'
 
+  # Ruby tooling
+  'rbenv'
+
   # Elixir tooling
   'elixir'
 
@@ -43,6 +46,12 @@ packages=(
 
   # Fuzzy Finder
   'ack'
+
+  # File content output with syntax
+  'bat'
+
+  # Image manipulation
+  'imagemagick'
 )
 
 for package in "${packages[@]}"; do
