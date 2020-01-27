@@ -1,0 +1,19 @@
+export ZSH="/Users/$USER/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+
+# ZSH Plugins
+plugins=(
+  git
+  zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# Exporting rest of envs (and config/API keys)
+#
+# DO NOT COMMIT SENSITIVE KEY/SECRET
+#
+export NVM_DIR="/Users/$USER/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
+export GOPATH="/Users/$USER/go"
+

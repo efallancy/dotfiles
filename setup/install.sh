@@ -9,5 +9,5 @@ source ./setup/homebrew.sh
 source ./setup/packages.sh
 source ./setup/postinstall.sh
 
-echo 'Mission accomplished ✅'
+echo 'Mission accomplished 🎉'
 

@@ -14,6 +14,9 @@ if [[ ! $(command -v brew) ]]; then
 else
   echo 'Updating Homebrew 🔄'
   brew update
+
+  echo 'Upgrading Homebrew packages 🔄'
+  brew upgrade
 fi
 
 echo 'Homebrew is good for brewing 👍'

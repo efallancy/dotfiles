@@ -2,14 +2,21 @@
 
 echo "Perform postinstall move 💃"
 
-# Perform path sourcing when shell is ZSH
+# zshrc
 if [[ "$SHELL" == "/bin/zsh" ]]; then
-  # NVM
-  echo "export NVM_DIR=\"$HOME/.nvm\"" >> ~/.zshrc
-  echo "  . \"/usr/local/opt/nvm/nvm.sh\"" >> ~/.zshrc
-
-  # Go
-  echo "export GOPATH=\"$HOME/go\"" >> ~/.zshrc
+  cp ./templates/zshrc ~/.zshrc
+  echo "zshrc file added ✅"
 fi
+
+# vim
+if [[ ! -d ~/.vim/bundle/Vundle.vim ]]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  echo "Vundle installed ✅"
+else
+  echo "Vundle exists 👍"
+fi
+
+cp ./templates/vimrc ~/.vimrc
+echo "vimrc file added ✅"
 
 echo "All set! 🛩"

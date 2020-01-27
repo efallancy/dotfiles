@@ -52,6 +52,17 @@ packages=(
 
   # Image manipulation
   'imagemagick'
+
+  # AWS
+  'awscli'
+
+  # Data store / Messaging
+  'kafka'
+  'redis'
+
+  # JSON query
+  'jq'
+  'jql'
 )
 
 for package in "${packages[@]}"; do
