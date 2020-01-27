@@ -62,6 +62,9 @@ packages=(
 
   # JSON query
   'jq'
+
+  # Kubernetes
+  'minikube'
 )
 
 for package in "${packages[@]}"; do
