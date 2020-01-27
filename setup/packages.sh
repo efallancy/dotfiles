@@ -62,7 +62,6 @@ packages=(
 
   # JSON query
   'jq'
-  'jql'
 )
 
 for package in "${packages[@]}"; do
