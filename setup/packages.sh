@@ -65,6 +65,9 @@ packages=(
 
   # Kubernetes
   'minikube'
+
+  # Terraform
+  'terraform'
 )
 
 for package in "${packages[@]}"; do
