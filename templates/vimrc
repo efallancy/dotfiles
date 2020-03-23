@@ -55,6 +55,13 @@ Plugin 'kyuhi/vim-emoji-complete'
 Plugin 'pangloss/vim-javascript'
 Plugin 'reasonml-editor/vim-reason-plus'
 Plugin 'jacoborus/tender.vim'
+Plugin 'arzg/vim-colors-xcode'
+
+if has('nvim')
+  Plugin 'neoclide/coc.nvim'
+else
+  Plugin 'ycm-core/YouCompleteMe'
+endif
 
 call vundle#end()
 filetype plugin indent on
@@ -66,7 +73,7 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-colorscheme tender
+colorscheme xcodedarkhc
 
 "For NerdTree toggle
 map <C-n> :NERDTreeToggle<CR>
