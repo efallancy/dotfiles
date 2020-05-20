@@ -68,6 +68,9 @@ packages=(
 
   # Terraform
   'terraform'
+
+  # Rust
+  'rust'
 )
 
 for package in "${packages[@]}"; do
