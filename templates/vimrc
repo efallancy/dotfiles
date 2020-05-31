@@ -7,6 +7,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 set encoding=utf-8
 set fileencoding=utf-8
 
+" Window pane opening
+set splitright
+set splitbelow
+
+" File buffer
+set autoread
+
 " Recursive path traversal
 set path+=**
 
@@ -22,8 +29,22 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" Ignore case
+" Using vim-airline, thus disabling current mode status
+set noshowmode
+
+" Search pattern
 set ignorecase
+set smartcase
+
+" Highlighting search
+set hlsearch
+set incsearch
+
+" No update of screen on macro/script execution
+set lazyredraw
+
+" Show cursor position all the time
+set ruler
 
 " OSX weird behaviour using backspace
 set backspace=indent,eol,start
@@ -56,6 +77,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'reasonml-editor/vim-reason-plus'
 Plugin 'jacoborus/tender.vim'
 Plugin 'arzg/vim-colors-xcode'
+Plugin 'prettier/vim-prettier'
+Plugin 'rust-lang/rust.vim'
 
 if has('nvim')
   Plugin 'neoclide/coc.nvim'
@@ -73,7 +96,7 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-colorscheme xcodedarkhc
+colorscheme dracula
 
 "For NerdTree toggle
 map <C-n> :NERDTreeToggle<CR>
