@@ -53,7 +53,6 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'dracula/vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
@@ -75,10 +74,12 @@ Plugin 'mhinz/vim-grepper'
 Plugin 'kyuhi/vim-emoji-complete'
 Plugin 'pangloss/vim-javascript'
 Plugin 'reasonml-editor/vim-reason-plus'
-Plugin 'jacoborus/tender.vim'
-Plugin 'arzg/vim-colors-xcode'
 Plugin 'prettier/vim-prettier'
 Plugin 'rust-lang/rust.vim'
+Plugin 'roman/golden-ratio'
+
+" Themes
+Plugin 'Rigellute/shades-of-purple.vim'
 
 if has('nvim')
   Plugin 'neoclide/coc.nvim'
@@ -96,7 +97,7 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-colorscheme dracula
+colorscheme shades_of_purple
 
 "For NerdTree toggle
 map <C-n> :NERDTreeToggle<CR>

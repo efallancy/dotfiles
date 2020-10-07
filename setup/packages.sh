@@ -43,6 +43,7 @@ packages=(
 
   # Editor
   'vim'
+  'neovim'
 
   # Fuzzy Finder
   'ack'
@@ -73,8 +74,26 @@ packages=(
   'rustup'
 )
 
+cask_packages=(
+  'google-chrome'
+
+  '1password'
+
+  'visual-studio-code'
+  
+  'iterm2'
+
+  'adoptopenjdk/openjdk/adoptopenjdk8'
+
+  'spectacle'
+)
+
 for package in "${packages[@]}"; do
   echo "📦 $package"
+done
+
+for cask_package in "${cask_packages[@]}"; do
+  echo "💾 $cask_package"
 done
 
 # Package installation
@@ -83,16 +102,21 @@ install_packages () {
   brew install ${packages[@]}
 }
 
+install_cask_packages () {
+  echo 'Installing cask packages...'
+  brew cask install ${cask_packages[@]}
+}
+
 # Java installation using OpenJDK
-install_openjdk () {
+tap_openjdk () {
   echo 'Tapping into OpenJDK...'
   brew tap AdoptOpenJDK/openjdk
-  brew cask install $1
 }
 
 # Installing all the packages
-install_openjdk adoptopenjdk8
+# tap_openjdk
 install_packages
+install_cask_packages
 
 echo 'Package installation done 🌟'
 

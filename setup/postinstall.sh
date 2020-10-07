@@ -16,7 +16,13 @@ else
   echo "Vundle exists 👍"
 fi
 
+# neovim
+mkdir -p ~/.config/nvim
+
 cp ./templates/vimrc ~/.vimrc
 echo "vimrc file added ✅"
+
+cp ./templates/nvimrc ~/.config/nvim/init.vim
+echo "init.vim file added ✅"
 
 echo "All set! 🛩"
