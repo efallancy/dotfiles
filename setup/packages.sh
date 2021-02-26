@@ -86,6 +86,14 @@ cask_packages=(
   'adoptopenjdk/openjdk/adoptopenjdk8'
 
   'spectacle'
+
+  'firefox'
+
+  'slack'
+
+  'telegram'
+
+  'docker'
 )
 
 for package in "${packages[@]}"; do
@@ -104,7 +112,7 @@ install_packages () {
 
 install_cask_packages () {
   echo 'Installing cask packages...'
-  brew cask install ${cask_packages[@]}
+  brew install --cask ${cask_packages[@]}
 }
 
 # Java installation using OpenJDK

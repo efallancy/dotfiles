@@ -80,6 +80,7 @@ Plugin 'roman/golden-ratio'
 
 " Themes
 Plugin 'Rigellute/shades-of-purple.vim'
+Plugin 'pineapplegiant/spaceduck'
 
 if has('nvim')
   Plugin 'neoclide/coc.nvim'
@@ -97,7 +98,7 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-colorscheme shades_of_purple
+colorscheme spaceduck
 
 "For NerdTree toggle
 map <C-n> :NERDTreeToggle<CR>
@@ -108,10 +109,13 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Airline theming
+let g:airline_theme = 'spaceduck'
+
 " ALE linting
 let g:airline#extensions#ale#enabled = 1 " Airline integration
 let g:ale_sign_error = "❗️"
-let g:ale_sign_warning= "💩"
+let g:ale_sign_warning= "⚠️"
 let g:ale_line_on_enter = 0
 let g:ale_linters_ignore = {'typescript': ['tslint']}
 let g:ale_linters = {'haskell': ['hdevtools', 'hlint', 'hfmt']}
