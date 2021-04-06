@@ -67,8 +67,9 @@ packages=(
   # Kubernetes
   'minikube'
 
-  # Terraform
+  # Infra as code
   'terraform'
+  'pulumi'
 
   # Rust toolchain
   'rustup'
@@ -85,7 +86,7 @@ cask_packages=(
 
   'adoptopenjdk/openjdk/adoptopenjdk8'
 
-  'spectacle'
+  'rectangle'
 
   'firefox'
 
@@ -94,6 +95,8 @@ cask_packages=(
   'telegram'
 
   'docker'
+
+  'zoom'
 )
 
 for package in "${packages[@]}"; do
