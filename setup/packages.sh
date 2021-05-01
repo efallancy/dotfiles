@@ -73,6 +73,10 @@ packages=(
 
   # Rust toolchain
   'rustup'
+
+  # OCaml
+  'ocaml'
+  'opam'
 )
 
 cask_packages=(
