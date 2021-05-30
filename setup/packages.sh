@@ -88,7 +88,7 @@ cask_packages=(
   
   'iterm2'
 
-  'adoptopenjdk/openjdk/adoptopenjdk8'
+  'adoptopenjdk11'
 
   'rectangle'
 
