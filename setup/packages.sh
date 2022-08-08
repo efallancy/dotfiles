@@ -17,7 +17,6 @@ packages=(
 
   # Node stuffs
   'nvm'
-  'yarn'
 
   # Clojure tooling
   'clojure'
@@ -25,7 +24,6 @@ packages=(
 
   # Go tooling
   'go'
-  'dep'
 
   # Ruby tooling
   'rbenv'
@@ -60,6 +58,8 @@ packages=(
   # Data store / Messaging
   'kafka'
   'redis'
+  'postgresql'
+  'sqlite'
 
   # JSON query
   'jq'
@@ -71,8 +71,8 @@ packages=(
   'terraform'
   'pulumi'
 
-  # Rust toolchain
-  'rustup'
+  # Rust toolchain - alias to `rustup`
+  'rustup-init'
 
   # OCaml
   'ocaml'
@@ -88,7 +88,11 @@ cask_packages=(
   
   'iterm2'
 
-  'adoptopenjdk11'
+  'kap'
+
+  # Current LTS: 17
+  # Requires symlinking
+  'openjdk@17'
 
   'rectangle'
 
@@ -122,14 +126,7 @@ install_cask_packages () {
   brew install --cask ${cask_packages[@]}
 }
 
-# Java installation using OpenJDK
-tap_openjdk () {
-  echo 'Tapping into OpenJDK...'
-  brew tap AdoptOpenJDK/openjdk
-}
-
 # Installing all the packages
-# tap_openjdk
 install_packages
 install_cask_packages
 
