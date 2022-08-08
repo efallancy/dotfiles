@@ -77,6 +77,12 @@ packages=(
   # OCaml
   'ocaml'
   'opam'
+
+  # Shell lint (e.g.: bash script)
+  'shellcheck'
+
+  # Scala build tool
+  'coursier/formulas/coursier'
 )
 
 cask_packages=(
