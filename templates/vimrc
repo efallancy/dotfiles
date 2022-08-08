@@ -60,8 +60,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-salve'
 Plugin 'mattn/emmet-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'w0rp/ale'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-surround'
@@ -76,15 +74,24 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'reasonml-editor/vim-reason-plus'
 Plugin 'prettier/vim-prettier'
 Plugin 'rust-lang/rust.vim'
-Plugin 'roman/golden-ratio'
+Plugin 'rescript-lang/vim-rescript'
+Plugin 'purescript-contrib/purescript-vim'
+Plugin 'sbdchd/neoformat'
+Plugin 'scalameta/nvim-metals'
 
 " Themes
 Plugin 'Rigellute/shades-of-purple.vim'
 Plugin 'pineapplegiant/spaceduck'
+Plugin 'NLKNguyen/papercolor-theme'
 
 if has('nvim')
   Plugin 'neoclide/coc.nvim'
+  Plugin 'nvim-lua/popup.nvim'
+  Plugin 'nvim-lua/plenary.nvim'
+  Plugin 'nvim-telescope/telescope.nvim'
 else
+  Plugin 'w0rp/ale'
+  Plugin 'ctrlpvim/ctrlp.vim'
   Plugin 'ycm-core/YouCompleteMe'
 endif
 
@@ -98,7 +105,7 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-colorscheme spaceduck
+colorscheme PaperColor
 
 "For NerdTree toggle
 map <C-n> :NERDTreeToggle<CR>
@@ -109,26 +116,86 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Might need to split this out to it's own lua folder
+if has('nvim') 
+  " Find files using Telescope command-line sugar.
+  nnoremap <leader>ff <cmd>Telescope find_files<cr>
+  nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+  nnoremap <leader>fb <cmd>Telescope buffers<cr>
+  nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+  " Trigger auto-complete suggesstion on COC
+  inoremap <silent><expr> <c-space> coc#refresh()
+
+  " Use `[g` and `]g` to navigate diagnostics
+  " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+  nmap <silent> [g <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+  " GoTo code navigation.
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+
+:lua << EOF
+  metals_config = require'metals'.bare_config()
+  metals_config.settings = {
+     showImplicitArguments = true,
+     excludedPackages = {
+       "akka.actor.typed.javadsl",
+       "com.github.swagger.akka.javadsl"
+     }
+  }
+
+  metals_config.on_attach = function()
+    require'completion'.on_attach();
+  end
+
+  metals_config.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = {
+        prefix = '>>>',
+      }
+    }
+  )
+EOF
+
+  if has('nvim-0.5')
+    augroup lsp
+      au!
+      au FileType scala,sbt lua require('metals').initialize_or_attach(metals_config)
+    augroup end
+  endif
+
+  autocmd FileType scala setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
+else
+
+  " Ctrl-P Fuzzy Finder
+  let g:ctrlp_map = '<c-p>'
+  let g:ctrlp_cmd = 'CtrlP'
+  let g:ctrlp_working_path_mode = 'r'
+  let g:ctrlp_extensions = ['line']
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+
+  " ALE linting
+  let g:airline#extensions#ale#enabled = 1 " Airline integration
+  let g:ale_sign_error = "❗️"
+  let g:ale_sign_warning= "⚠️"
+  let g:ale_line_on_enter = 0
+  let g:ale_linters_ignore = {'typescript': ['tslint']}
+  let g:ale_linters = {'haskell': ['hdevtools', 'hlint', 'hfmt']}
+
+  highlight clear ALEErrorSign
+  highlight clear ALEWarningSign
+
+endif
+
 " Airline theming
 let g:airline_theme = 'spaceduck'
 
-" ALE linting
-let g:airline#extensions#ale#enabled = 1 " Airline integration
-let g:ale_sign_error = "❗️"
-let g:ale_sign_warning= "⚠️"
-let g:ale_line_on_enter = 0
-let g:ale_linters_ignore = {'typescript': ['tslint']}
-let g:ale_linters = {'haskell': ['hdevtools', 'hlint', 'hfmt']}
 
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-
-" Ctrl-P Fuzzy Finder
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_extensions = ['line']
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 
 " Rainbow Parentheses
 let g:rainbow_active = 1
@@ -138,3 +205,58 @@ let g:typescript_ignore_typescriptdoc = 0
 
 " vim-hindent
 let g:hindent_on_save = 0
+
+" neoformat - OCaml
+let g:neoformat_ocaml_ocamlformat = {
+  \ 'exe': 'ocamlformat',
+  \ 'no_append': 1,
+  \ 'stdin': 1,
+  \ 'args': ['--disable-outside-detected-project', '--name', '"%:p"', '-']
+  \ }
+let g:neoformat_ocaml_ocamlformat = {
+  \ 'exe': 'ocp-indent',
+  \ }
+let g:neoformat_enabled_ocaml = ['ocamlformat', 'ocpindent']
+
+
+if !(has('nvim'))
+
+" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+let s:opam_share_dir = system("opam config var share")
+let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+
+let s:opam_configuration = {}
+
+function! OpamConfOcpIndent()
+  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+endfunction
+let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+
+function! OpamConfOcpIndex()
+  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+endfunction
+let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+
+function! OpamConfMerlin()
+  let l:dir = s:opam_share_dir . "/merlin/vim"
+  execute "set rtp+=" . l:dir
+endfunction
+let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+
+let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+for tool in s:opam_packages
+  " Respect package order (merlin should be after ocp-index)
+  if count(s:opam_available_tools, tool) > 0
+    call s:opam_configuration[tool]()
+  endif
+endfor
+" ## end of OPAM user-setup addition for vim / base ## keep this line
+" ## added by OPAM user-setup for vim / ocp-indent ## 89e5ff366b601b337da242a466daa6bf ## you can edit, but keep this line
+if count(s:opam_available_tools,"ocp-indent") == 0
+  source "/Users/efallancy/.opam/default/share/ocp-indent/vim/indent/ocaml.vim"
+endif
+" ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
+"
+endif
