@@ -83,6 +83,10 @@ packages=(
 
   # Scala build tool
   'coursier/formulas/coursier'
+
+  # Java LTS: 17
+  # Requires symlinking
+  'openjdk@17'
 )
 
 cask_packages=(
@@ -95,10 +99,6 @@ cask_packages=(
   'iterm2'
 
   'kap'
-
-  # Current LTS: 17
-  # Requires symlinking
-  'openjdk@17'
 
   'rectangle'
 
