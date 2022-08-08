@@ -4,13 +4,19 @@ echo 'Homebrew-ing 🍺'
 
 # Ref: https://brew.sh/
 install_homebrew () {
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+}
+
+configure_brew_command () {
+  echo 'eval "$(`which brew` shellenv)"' >> $HOME/.zprofile
+  eval "$(`which brew` shellenv)"
 }
 
 # Validating if Homebrew is available
 if [[ ! $(command -v brew) ]]; then
   echo 'Installing Homebrew 🍻'
   install_homebrew
+  configure_brew_command
 else
   echo 'Updating Homebrew 🔄'
   brew update
