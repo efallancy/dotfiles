@@ -111,6 +111,8 @@ cask_packages=(
   'docker'
 
   'zoom'
+
+  'postman'
 )
 
 for package in "${packages[@]}"; do
