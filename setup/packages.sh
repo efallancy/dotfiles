@@ -21,6 +21,7 @@ packages=(
   # Clojure tooling
   'clojure'
   'leiningen'
+  'clojure-lsp'
 
   # Go tooling
   'go'
@@ -73,6 +74,7 @@ packages=(
 
   # Rust toolchain - alias to `rustup`
   'rustup-init'
+  'rust-analyzer'
 
   # OCaml
   'ocaml'
