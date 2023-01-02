@@ -8,8 +8,9 @@ install_homebrew () {
 }
 
 configure_brew_command () {
-  echo 'eval "$(`which brew` shellenv)"' >> $HOME/.zprofile
-  eval "$(`which brew` shellenv)"
+  eval "$(homebrew/bin/brew shellenv)"
+  brew update --force --quiet
+  chmod -R go-w "$(brew --prefix)/share/zsh"
 }
 
 # Validating if Homebrew is available
