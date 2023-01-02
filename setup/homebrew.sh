@@ -8,7 +8,16 @@ install_homebrew () {
 }
 
 configure_brew_command () {
-  eval "$(homebrew/bin/brew shellenv)"
+  # Intel Chip
+  if [[ $(uname -m) == "x86_64" ]]; then
+    echo 'eval "$(`which brew` shellenv)"' >> $HOME/.zprofile
+    eval "$(`which brew` shellenv)"
+  else
+  # Apple Silicon Chip
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+
   brew update --force --quiet
   chmod -R go-w "$(brew --prefix)/share/zsh"
 }
