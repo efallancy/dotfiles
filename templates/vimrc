@@ -29,7 +29,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" Using vim-airline, thus disabling current mode status
+" Using vim-lightline, thus disabling current mode status
 set noshowmode
 
 " Search pattern
@@ -52,31 +52,25 @@ set backspace=indent,eol,start
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-airline/vim-airline'
+Plugin 'itchyny/lightline.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-salve'
 Plugin 'mattn/emmet-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-surround'
 Plugin 'luochen1990/rainbow'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'quramy/tsuquyomi'
 Plugin 'neovimhaskell/haskell-vim'
-Plugin 'alx741/vim-hindent'
 Plugin 'mhinz/vim-grepper'
 Plugin 'kyuhi/vim-emoji-complete'
 Plugin 'pangloss/vim-javascript'
 Plugin 'reasonml-editor/vim-reason-plus'
-Plugin 'prettier/vim-prettier'
 Plugin 'rust-lang/rust.vim'
 Plugin 'rescript-lang/vim-rescript'
 Plugin 'purescript-contrib/purescript-vim'
-Plugin 'sbdchd/neoformat'
 Plugin 'scalameta/nvim-metals'
 
 " Themes
@@ -89,10 +83,14 @@ if has('nvim')
   Plugin 'nvim-lua/popup.nvim'
   Plugin 'nvim-lua/plenary.nvim'
   Plugin 'nvim-telescope/telescope.nvim'
+  Plugin 'Olical/conjure'
 else
   Plugin 'w0rp/ale'
   Plugin 'ctrlpvim/ctrlp.vim'
   Plugin 'ycm-core/YouCompleteMe'
+  Plugin 'tpope/vim-fireplace'
+  Plugin 'tpope/vim-salve'
+  Plugin 'quramy/tsuquyomi'
 endif
 
 call vundle#end()
@@ -180,7 +178,6 @@ else
   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 
   " ALE linting
-  let g:airline#extensions#ale#enabled = 1 " Airline integration
   let g:ale_sign_error = "❗️"
   let g:ale_sign_warning= "⚠️"
   let g:ale_line_on_enter = 0
@@ -192,71 +189,9 @@ else
 
 endif
 
-" Airline theming
-let g:airline_theme = 'spaceduck'
-
-
-
 " Rainbow Parentheses
 let g:rainbow_active = 1
 
 " vim-typescript
 let g:typescript_ignore_typescriptdoc = 0
 
-" vim-hindent
-let g:hindent_on_save = 0
-
-" neoformat - OCaml
-let g:neoformat_ocaml_ocamlformat = {
-  \ 'exe': 'ocamlformat',
-  \ 'no_append': 1,
-  \ 'stdin': 1,
-  \ 'args': ['--disable-outside-detected-project', '--name', '"%:p"', '-']
-  \ }
-let g:neoformat_ocaml_ocamlformat = {
-  \ 'exe': 'ocp-indent',
-  \ }
-let g:neoformat_enabled_ocaml = ['ocamlformat', 'ocpindent']
-
-
-if !(has('nvim'))
-
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
-let s:opam_share_dir = system("opam config var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
-
-let s:opam_configuration = {}
-
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
-
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
-
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if count(s:opam_available_tools, tool) > 0
-    call s:opam_configuration[tool]()
-  endif
-endfor
-" ## end of OPAM user-setup addition for vim / base ## keep this line
-" ## added by OPAM user-setup for vim / ocp-indent ## 89e5ff366b601b337da242a466daa6bf ## you can edit, but keep this line
-if count(s:opam_available_tools,"ocp-indent") == 0
-  source "/Users/efallancy/.opam/default/share/ocp-indent/vim/indent/ocaml.vim"
-endif
-" ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
-"
-endif
