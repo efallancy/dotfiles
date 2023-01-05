@@ -67,6 +67,7 @@ packages=(
 
   # Kubernetes
   'minikube'
+  'kubectx'
 
   # Infra as code
   'terraform'
@@ -89,6 +90,9 @@ packages=(
   # Java LTS: 17
   # Requires symlinking
   'openjdk@17'
+
+  # Lightweight Makefile
+  'go-task'
 )
 
 cask_packages=(
