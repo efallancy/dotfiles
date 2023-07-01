@@ -59,7 +59,7 @@ packages=(
   # Data store / Messaging
   'kafka'
   'redis'
-  'postgresql'
+  'postgresql@15'
   'sqlite'
 
   # JSON query
@@ -68,6 +68,7 @@ packages=(
   # Kubernetes
   'minikube'
   'kubectx'
+  'k9s'
 
   # Infra as code
   'terraform'
@@ -103,8 +104,6 @@ cask_packages=(
   'visual-studio-code'
   
   'iterm2'
-
-  'kap'
 
   'rectangle'
 

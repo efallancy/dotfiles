@@ -13,7 +13,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # DO NOT COMMIT SENSITIVE KEY/SECRET
 #
-export NVM_DIR="/Users/$USER/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
-export GOPATH="/Users/$USER/go"
+export NVM_DIR="$HOME/.nvm"
+  . "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
+export GOPATH="$HOME/go"
 
