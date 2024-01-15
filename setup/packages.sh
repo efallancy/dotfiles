@@ -120,12 +120,20 @@ cask_packages=(
   'postman'
 )
 
+tap_packages=(
+  'bun'
+)
+
 for package in "${packages[@]}"; do
   echo "📦 $package"
 done
 
 for cask_package in "${cask_packages[@]}"; do
   echo "💾 $cask_package"
+done
+
+for tap_package in "${tap_packages[@]}"; do
+  echo "🪄 $tap_package"
 done
 
 # Package installation
@@ -139,7 +147,13 @@ install_cask_packages () {
   brew install --cask ${cask_packages[@]}
 }
 
+tap_packages () {
+  echo 'Tapping Bun.sh'
+  brew tap oven-sh/bun
+}
+
 # Installing all the packages
+tap_packages
 install_packages
 install_cask_packages
 
