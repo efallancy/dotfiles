@@ -22,6 +22,7 @@ packages=(
   'clojure'
   'leiningen'
   'clojure-lsp'
+  'borkdude/brew/babashka'
 
   # Go tooling
   'go'
