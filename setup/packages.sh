@@ -35,6 +35,7 @@ packages=(
 
   # Python tooling
   'python'
+  'pipx'
 
   # Haskell tooling
   'ghc'
@@ -95,6 +96,9 @@ packages=(
 
   # Lightweight Makefile
   'go-task'
+
+  # AI
+  'ollama'
 )
 
 cask_packages=(
