@@ -123,6 +123,10 @@ cask_packages=(
   'zoom'
 
   'postman'
+
+  'zed'
+  
+  'brave-browser'
 )
 
 tap_packages=(
