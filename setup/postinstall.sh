@@ -4,7 +4,7 @@ echo "Perform postinstall move 💃"
 
 # zshrc
 if [[ "$SHELL" == "/bin/zsh" ]]; then
-  cp ./templates/zshrc ~/.zshrc
+  cp ./config/zshrc ~/.zshrc
   echo "zshrc file added ✅"
 fi
 
@@ -16,13 +16,14 @@ else
   echo "Vundle exists 👍"
 fi
 
-# neovim
-mkdir -p ~/.config/nvim
-
-cp ./templates/vimrc ~/.vimrc
+cp ./config/vimrc ~/.vimrc
 echo "vimrc file added ✅"
 
-cp ./templates/nvimrc ~/.config/nvim/init.vim
-echo "init.vim file added ✅"
+# Create config folder
+mkdir -p ~/.config
+
+# neovim
+cp -R ./config/nvim ~/.config
+echo "neovim configuration added ✅"
 
 echo "All set! 🛩"

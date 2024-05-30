@@ -46,8 +46,15 @@ packages=(
   'vim'
   'neovim'
 
+  # Mainly for fuzzy finder
+  'perl'
+  'universal-ctags'
+
   # Fuzzy Finder
   'ack'
+  'ripgrep'
+  'fzf'
+  'the_silver_searcher'
 
   # File content output with syntax
   'bat'
@@ -86,9 +93,6 @@ packages=(
 
   # Shell lint (e.g.: bash script)
   'shellcheck'
-
-  # Scala build tool
-  'coursier/formulas/coursier'
 
   # Java LTS: 17
   # Requires symlinking
