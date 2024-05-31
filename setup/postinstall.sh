@@ -4,16 +4,22 @@ echo "Perform postinstall move 💃"
 
 # zshrc
 if [[ "$SHELL" == "/bin/zsh" ]]; then
-  cp ./config/zshrc ~/.zshrc
-  echo "zshrc file added ✅"
+  if [[ ! -f ~/.zshrc ]]; then
+    cp ./config/zshrc ~/.zshrc
+    echo "zshrc file added ✅"
+  else
+    echo "zshrc file exists and no action needed 👍"
+  fi
 fi
 
 # vim
-if [[ ! -d ~/.vim/bundle/Vundle.vim ]]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  echo "Vundle installed ✅"
+if [[ ! -d ~/.vim/autoload/plug.vim ]]; then
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  echo "vim-plug intalled ✅"
 else
-  echo "Vundle exists 👍"
+  echo "vim-plug exists 👍"
 fi
 
 cp ./config/vimrc ~/.vimrc
