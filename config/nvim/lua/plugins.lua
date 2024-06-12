@@ -71,14 +71,6 @@ return {
     config = function()
       local lint = require("lint")
 
-      lint.linters_by_ft = {
-        -- markdown = { "markdownlint" },
-        javascript = { "eslint_d" },
-        javascriptreact = { "eslint_d" },
-        typescript = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
-      }
-
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
       vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
@@ -189,6 +181,17 @@ return {
     "lewis6991/gitsigns.nvim",
     config = function()
       require('gitsigns').setup()
+    end
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function()
+      require("tokyonight").setup()
+
+      vim.cmd[[colorscheme tokyonight]]
     end
   }
 }
