@@ -111,7 +111,7 @@ cask_packages=(
   '1password'
 
   'visual-studio-code'
-  
+
   'iterm2'
 
   'rectangle'
@@ -129,8 +129,10 @@ cask_packages=(
   'postman'
 
   'zed'
-  
+
   'brave-browser'
+
+  'tableplus'
 )
 
 tap_packages=(
@@ -171,4 +173,3 @@ install_packages
 install_cask_packages
 
 echo 'Package installation done 🌟'
-
