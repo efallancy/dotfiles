@@ -133,6 +133,8 @@ cask_packages=(
   'brave-browser'
 
   'tableplus'
+
+  'ghostty'
 )
 
 tap_packages=(
