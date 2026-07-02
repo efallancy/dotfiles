@@ -135,6 +135,8 @@ cask_packages=(
   'ghostty'
 
   'orbstack'
+  
+  'claude'
 )
 
 tap_packages=(
