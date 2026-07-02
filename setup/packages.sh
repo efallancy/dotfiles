@@ -96,7 +96,7 @@ packages=(
 
   # Java LTS: 17
   # Requires symlinking
-  'openjdk@17'
+  'openjdk@25'
 
   # Lightweight Makefile
   'go-task'
@@ -120,8 +120,6 @@ cask_packages=(
 
   'slack'
 
-  'telegram'
-
   'docker'
 
   'zoom'
@@ -135,6 +133,8 @@ cask_packages=(
   'tableplus'
 
   'ghostty'
+
+  'orbstack'
 )
 
 tap_packages=(
