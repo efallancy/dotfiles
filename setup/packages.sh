@@ -80,7 +80,6 @@ packages=(
   'k9s'
 
   # Infra as code
-  'terraform'
   'pulumi'
 
   # Rust toolchain - alias to `rustup`
@@ -141,6 +140,7 @@ cask_packages=(
 
 tap_packages=(
   'bun'
+  'hashicorp/tap/terraform'
 )
 
 for package in "${packages[@]}"; do
@@ -169,6 +169,9 @@ install_cask_packages () {
 tap_packages () {
   echo 'Tapping Bun.sh'
   brew tap oven-sh/bun
+
+  echo 'Tapping Hashicorp'
+  brew tap hashicorp/tap
 }
 
 # Installing all the packages
